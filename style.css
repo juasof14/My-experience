@@ -1,32 +1,221 @@
+/* ☀️ MODO CLARO — cielo suave y nubes */
 body {
-    font-family: Arial, sans-serif;
-    text-allign: center;
-    margin-top: 50px;
-    background-color: #f7f7f7;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to bottom, #aee1ff 0%, #f9f9f9 100%);
+  color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+/* 🌤️ Sol */
+body::after {
+  content: "";
+  position: absolute;
+  top: 60px;
+  right: 80px;
+  width: 90px;
+  height: 90px;
+  background: radial-gradient(circle at 30% 30%, #fff79a, #ffcc33);
+  border-radius: 50%;
+  box-shadow: 0 0 25px rgba(255, 230, 100, 0.6);
+  animation: floatSun 6s ease-in-out infinite alternate;
+}
+
+/* ☁️ Nubes */
+body::before {
+  content: "";
+  position: absolute;
+  top: 120px;
+  left: -100px;
+  width: 200%;
+  height: 200px;
+  background: radial-gradient(circle at 30% 50%, rgba(255,255,255,0.8) 40%, transparent 70%),
+              radial-gradient(circle at 70% 50%, rgba(255,255,255,0.7) 40%, transparent 70%);
+  background-size: 400px 200px;
+  animation: moveClouds 60s linear infinite;
+  opacity: 0.6;
+}
+
+/* 🌞 Animaciones */
+@keyframes floatSun {
+  from { transform: translateY(0); }
+  to { transform: translateY(-10px); }
+}
+
+@keyframes moveClouds {
+  from { background-position: 0 0, 200px 0; }
+  to { background-position: -800px 0, -600px 0; }
+}
+
+
+.container {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  width: 350px;
+  backdrop-filter: blur(10px);
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.input-container {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
 }
 
 input {
-    padding: 10px;
-    width: 200px;
-    border 1px solid #ccc;
-    border-radius: 8px;
+  flex: 1;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  font-size: 16px;
 }
 
 button {
-    padding: 10px 15px;
-    border: none;
-    background-color:#007BFF;
-    color: white;
-    border-radius: 8px;
-    cursor: pointer;
+  background-color: #007bff;
+  border: none;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
 }
 
 button:hover {
-    background-color: #0056b3;
+  background-color: #00A67E;
 }
 
-li.completed {
-    text-decoration: line-through;
-    color: gray;
-    background-color: #e0e0e0;
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
+
+li {
+  background: rgba(255, 255, 255, 0.15);
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+li:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: scale(1.02);
+}
+
+.completed {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+#mensaje {
+  margin-top: 10px;
+  font-weight: bold;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+#mensaje.mostrar {
+  opacity: 1;
+}
+
+#modoBtn {
+  background-color: #444;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+  margin-bottom: 15px;
+}
+
+#modoBtn:hover {
+  background-color: #222;
+}
+
+/* 🌌 Fondo con cielo estrellado y luna animada */
+body.dark {
+  background: radial-gradient(circle at bottom, #0d1b2a, #000);
+  color: #eee;
+  overflow: hidden;
+  position: relative;
+}
+
+/* ✨ Estrellas */
+body.dark::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  background-image: radial-gradient(white 1px, transparent 1px);
+  background-size: 3px 3px;
+  opacity: 0.3;
+  animation: twinkle 4s infinite ease-in-out alternate;
+}
+
+/* 🌙 Luna */
+body.dark::after {
+  content: "";
+  position: absolute;
+  top: 60px;
+  right: 80px;
+  width: 80px;
+  height: 80px;
+  background: radial-gradient(circle at 30% 30%, #fff, #ddd 40%, #bbb);
+  border-radius: 50%;
+  box-shadow: 0 0 20px rgba(255, 255, 200, 0.5);
+  animation: floatMoon 6s ease-in-out infinite alternate;
+}
+
+/* ✨ Animaciones suaves */
+@keyframes twinkle {
+  from { opacity: 0.2; transform: scale(1); }
+  to { opacity: 0.4; transform: scale(1.05); }
+}
+
+@keyframes floatMoon {
+  from { transform: translateY(0); }
+  to { transform: translateY(-10px); }
+}
+
+/* 🌓 Ajustes visuales en modo oscuro */
+body.dark .container {
+  background-color: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 25px rgba(255, 255, 255, 0.05);
+  position: relative;
+  z-index: 2;
+}
+
+body.dark input {
+  background-color: rgba(255,255,255,0.1);
+  color: white;
+}
+
+body.dark li {
+  background: rgba(255, 255, 255, 0.1);
+  color: #f0f0f0;
+}
+
+#modoBtn {
+  position: relative;
+  z-index: 5;
+}
+

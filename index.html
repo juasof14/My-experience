@@ -1,20 +1,25 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>Mi Lista de Tareas</title>
-    <link rel="stylesheet"
-href="style.css">
+  <meta charset="UTF-8">
+  <title>Mi Lista de Tareas</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div class="container">
     <h1>Mi Lista de Tareas</h1>
+    <button id="modoBtn">🌙 Modo Oscuro</button>
 
-    <input type="text" id="tareaInput"
-placeholder="Escribe tu tarea...">
-    <button id="agregarBtn">Agregar</button>
+    <div class="input-container">
+      <input type="text" id="tareaInput" placeholder="Escribe tu tarea...">
+      <button id="agregarBtn">Agregar</button>
+      <div id="mensaje"></div>
+    </div>
 
-                <ul id="listaTareas"></ul>
+    <ul id="listaTareas"></ul>
+  </div>
 
-                <script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
+
